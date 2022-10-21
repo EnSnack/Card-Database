@@ -92,16 +92,16 @@ class Rarity {
 	}
 }
 
-let cardDB = new Database();
-
-Object.keys(cardsJSON).forEach((card) => {
-	let parent = cardsJSON[card]
-	cardDB.addCard(parent['name'],parent['cost'],parent['damage'],parent['health'],parent['ability'],2,false);
-})	
-
-
+app.use("/css", express.static(__dirname + '/css'));
 
 app.get("/", (req, res) => {
+	let cardDB = new Database();
+
+	Object.keys(cardsJSON).forEach((card) => {
+		let parent = cardsJSON[card]
+		cardDB.addCard(parent['name'],parent['cost'],parent['damage'],parent['health'],parent['ability'],2,false);
+	})
+	
 	fs.readFile(__dirname + '/index.html', 'utf8', function (err,data) {
         if (err) return console.log(err);
 		

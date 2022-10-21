@@ -107,12 +107,13 @@ var Rarity = /** @class */ (function () {
     });
     return Rarity;
 }());
-var cardDB = new Database();
-Object.keys(cardsJSON).forEach(function (card) {
-    var parent = cardsJSON[card];
-    cardDB.addCard(parent['name'], parent['cost'], parent['damage'], parent['health'], parent['ability'], 2, false);
-});
+app.use("/css", express.static(__dirname + '/css'));
 app.get("/", function (req, res) {
+    var cardDB = new Database();
+    Object.keys(cardsJSON).forEach(function (card) {
+        var parent = cardsJSON[card];
+        cardDB.addCard(parent['name'], parent['cost'], parent['damage'], parent['health'], parent['ability'], 2, false);
+    });
     fs.readFile(__dirname + '/index.html', 'utf8', function (err, data) {
         if (err)
             return console.log(err);
