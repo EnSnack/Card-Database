@@ -107,7 +107,7 @@ app.get("/", (req, res) => {
 		
 		const $ = cheerio.load(data);
 		cardDB.database.forEach((card) => {
-			$('#content').append(`<div class="card"><div id="cardName">${card.cardName}</div><div id="cardCost">${card.cardCost}</div><div id="cardDamage">${card.cardDamage}</div><div id="cardHealth">${card.cardHealth}</div></div>`)
+			$('#content').append(`<div class="card"><div class="cardName">${card.cardName}</div><div class="cardCost">Cost: ${card.cardCost}</div><div class="cardDamage">Damage: ${card.cardDamage}</div><div class="cardHealth">Health: ${card.cardHealth}</div><div class="cardAbility">${card.cardAbility}</div></div>`)
 			
 		});
 	 

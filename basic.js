@@ -119,7 +119,7 @@ app.get("/", function (req, res) {
             return console.log(err);
         var $ = cheerio.load(data);
         cardDB.database.forEach(function (card) {
-            $('#content').append("<div class=\"card\"><div id=\"cardName\">".concat(card.cardName, "</div><div id=\"cardCost\">").concat(card.cardCost, "</div><div id=\"cardDamage\">").concat(card.cardDamage, "</div><div id=\"cardHealth\">").concat(card.cardHealth, "</div></div>"));
+            $('#content').append("<div class=\"card\"><div class=\"cardName\">".concat(card.cardName, "</div><div class=\"cardCost\">Cost: ").concat(card.cardCost, "</div><div class=\"cardDamage\">Damage: ").concat(card.cardDamage, "</div><div class=\"cardHealth\">Health: ").concat(card.cardHealth, "</div><div class=\"cardAbility\">").concat(card.cardAbility, "</div></div>"));
         });
         res.send($.html());
     });

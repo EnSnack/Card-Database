@@ -1,18 +1,146 @@
 {
 	"EE001": {
-		"name": "Leeroy Jenkins",
-		"ability": "<b>Charge</b>. <b>Battlecry:</b> Summon two 1/1 Whelps for your opponent.",
-		"damage": 6,
-		"cost": 5,
+		"name": "Desert Witch",
+		"ability": "<b>Creation:</b> Summon two 1/1 Implings.",
+		"damage": 3,
+		"cost": 3,
 		"health": 2,
-		"rarity": 5
+		"rarity": 3
 	},
 	"EE002": {
-		"name": "Test",
-		"ability": "Whole lotta things",
+		"name": "Impling",
+		"ability": "",
 		"damage": 1,
 		"cost": 1,
 		"health": 1,
 		"rarity": 1
+	},
+	"EE003": {
+		"name": "Snow Witch",
+		"ability": "<b>Destruction:</b> Summon two 1/1 Implings.",
+		"damage": 3,
+		"cost": 3,
+		"health": 2,
+		"rarity": 3
+	},
+	"EE004": {
+		"name": "Mountain Witch",
+		"ability": "<b>Creation:</b> Summon a 1/1 Impling for every 1/1 Impling you own.",
+		"damage": 1,
+		"cost": 4,
+		"health": 1,
+		"rarity": 3
+	},
+	"EE005": {
+		"name": "Death Witch",
+		"ability": "<b>Destruction:</b> Summon a 1/1 Impling, then destroy all 1/1 Implings you own.",
+		"damage": 1,
+		"cost": 3,
+		"health": 3,
+		"rarity": 3
+	},
+	"EE006": {
+		"name": "Life Witch",
+		"ability": "<b>Creation:</b> Heal all other cards you own 1 Health for every Impling you own.",
+		"damage": 1,
+		"cost": 3,
+		"health": 5,
+		"rarity": 3
+	},
+	"EE007": {
+		"name": "Time Witch",
+		"ability": "<b>Creation:</b> For every 1/1 Impling destroyed this turn, summon a 1/1 Impling.",
+		"damage": 1,
+		"cost": 4,
+		"health": 1,
+		"rarity": 3
+	},
+	"EE008": {
+		"name": "Swamp Witch",
+		"ability": "<b>Activate:</b> Destroy a 1/1 Impling to summon a 1/1 Impling.",
+		"damage": 2,
+		"cost": 2,
+		"health": 2,
+		"rarity": 3
+	},
+	"EE009": {
+		"name": "Plague Witch",
+		"ability": "<b>Destruction:</b> Destroy all 1/1 Implings you own, then lose 1 life for every Impling destroyed this way.",
+		"damage": 5,
+		"cost": 5,
+		"health": 5,
+		"rarity": 3
+	},
+	"EE010": {
+		"name": "Famine Witch",
+		"ability": "<b>Activate:</b> Lose 1 life, then summon a 1/1 Impling.",
+		"damage": 2,
+		"cost": 3,
+		"health": 2,
+		"rarity": 3
+	},
+	"EE011": {
+		"name": "Glutton Witch",
+		"ability": "<b>Activate:</b> Destroy a 1/1 Impling, else destroy this card.",
+		"damage": 5,
+		"cost": 3,
+		"health": 5,
+		"rarity": 3
+	},
+	"EE012": {
+		"name": "Hand Witch",
+		"ability": "<b>Existence:</b> If you own a 1/1 Impling, immediately play this card.",
+		"damage": 1,
+		"cost": 1,
+		"health": 1,
+		"rarity": 1
+	},
+	"EE013": {
+		"name": "Blood Witch",
+		"ability": "<b>Activate:</b> If you own a 1/1 Impling, destroy it, then heal this card to full health.",
+		"damage": 1,
+		"cost": 3,
+		"health": 4,
+		"rarity": 3
+	},
+	"EE014": {
+		"name": "Lust Witch",
+		"ability": "<b>Creation:</b> If any other cards on the field is a Witch card, destroy this card.",
+		"damage": 3,
+		"cost": 3,
+		"health": 3,
+		"rarity": 4
+	},
+	"EE015": {
+		"name": "Wrath Witch",
+		"ability": "<b>Activate:</b> If there are any 1/1 Implings on the field, immediately attack one.",
+		"damage": 3,
+		"cost": 2,
+		"health": 3,
+		"rarity": 3
+	},
+	"EE016": {
+		"name": "Sloth Witch",
+		"ability": "<b>Destruction:</b> Immediately resummon this card.",
+		"damage": 0,
+		"cost": 2,
+		"health": 3,
+		"rarity": 1
+	},
+	"EE017": {
+		"name": "Envy Witch",
+		"ability": "<b>Creation:</b> If any Witch card was destroyed this turn, summon a copy of the destroyed card for the opponent.",
+		"damage": 3,
+		"cost": 4,
+		"health": 3,
+		"rarity": 3
+	},
+	"EE018": {
+		"name": "Crazy Witch",
+		"ability": "<b>Destruction:</b> Destroy one other Witch card you own.",
+		"damage": 3,
+		"cost": 3,
+		"health": 3,
+		"rarity": 3
 	}
 }
