@@ -1,7 +1,7 @@
 var express = require("express");
 var app = express();
 var fs = require("fs");
-var path = require("path");
+var cheerio = require("cheerio");
 var PORT = 3000;
 var cardsJSON = JSON.parse(fs.readFileSync('cards.json'));
 app.listen(PORT, function () {
@@ -110,8 +110,16 @@ var Rarity = /** @class */ (function () {
 var cardDB = new Database();
 Object.keys(cardsJSON).forEach(function (card) {
     var parent = cardsJSON[card];
-    cardDB.addCard(parent['name'], parent['cost'], parent['attack'], parent['health'], parent['ability'], 2, false);
+    cardDB.addCard(parent['name'], parent['cost'], parent['damage'], parent['health'], parent['ability'], 2, false);
 });
 app.get("/", function (req, res) {
-    res.sendFile('index.html', { root: __dirname });
+    fs.readFile(__dirname + '/index.html', 'utf8', function (err, data) {
+        if (err)
+            return console.log(err);
+        var $ = cheerio.load(data);
+        cardDB.database.forEach(function (card) {
+            $('#content').append("<div class=\"card\"><div id=\"cardName\">".concat(card.cardName, "</div><div id=\"cardCost\">").concat(card.cardCost, "</div><div id=\"cardDamage\">").concat(card.cardDamage, "</div><div id=\"cardHealth\">").concat(card.cardHealth, "</div></div>"));
+        });
+        res.send($.html());
+    });
 });

@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const fs = require("fs");
-const path = require("path");
+const cheerio = require("cheerio");
 
 const PORT = 3000;
 
@@ -96,11 +96,21 @@ let cardDB = new Database();
 
 Object.keys(cardsJSON).forEach((card) => {
 	let parent = cardsJSON[card]
-	cardDB.addCard(parent['name'],parent['cost'],parent['attack'],parent['health'],parent['ability'],2,false);
+	cardDB.addCard(parent['name'],parent['cost'],parent['damage'],parent['health'],parent['ability'],2,false);
 })	
 
 
 
 app.get("/", (req, res) => {
-  res.sendFile('index.html', {root : __dirname});
+	fs.readFile(__dirname + '/index.html', 'utf8', function (err,data) {
+        if (err) return console.log(err);
+		
+		const $ = cheerio.load(data);
+		cardDB.database.forEach((card) => {
+			$('#content').append(`<div class="card"><div id="cardName">${card.cardName}</div><div id="cardCost">${card.cardCost}</div><div id="cardDamage">${card.cardDamage}</div><div id="cardHealth">${card.cardHealth}</div></div>`)
+			
+		});
+	 
+		res.send($.html());
+	});
 });
