@@ -87,22 +87,20 @@ class Rarity {
 	foil: boolean;
 	
 	constructor(rarity: number, foil: boolean) {
-		this.rarity = rarity >= 0 && rarity <= 5 ? rarity : 0
+		this.rarity = rarity >= 1 && rarity <= 5 ? rarity : 0
 		this.foil = foil;
 	}
 	
-	get cardRarity(): number {
+	get cardRarityRaw(): number {
 		return this.rarity;
 	}
-	set cardRarity(value: number) {
-		if(value < 0 || value > 5) {
-			throw new Error('Please input valid rarity.');
-			return;
+	get cardRarityStars(): string {
+		let stars = '';
+		for(let i=0;i<this.rarity;i++) {
+			stars+='*'
 		}
-		
-		this.rarity = value;
+		return stars;
 	}
-	
 	get cardFoil(): boolean {
 		return this.foil;
 	}
@@ -112,7 +110,6 @@ class Rarity {
 }
 
 function main() : void {
-	
 	const PORT = 3000;
 	const cardsJSON = JSON.parse(fs.readFileSync('cards.json'));
 
@@ -123,11 +120,11 @@ function main() : void {
 	app.use("/css", express.static(__dirname + '/css'));
 
 	app.get("/", (req, res) => {
-		let cardDB = new Database();
+		const cardDB = new Database();
 
 		Object.keys(cardsJSON).forEach((card) => {
-			let parent = cardsJSON[card]
-			cardDB.addCard(card,parent['name'],parent['cost'],parent['damage'],parent['health'],parent['ability'],2,false);
+			const parent = cardsJSON[card];
+			cardDB.addCard(card,parent['name'],parent['cost'],parent['damage'],parent['health'],parent['ability'],parent['rarity'],false);
 		})
 		
 		fs.readFile(__dirname + '/index.html', 'utf8', function (err,data) {
@@ -135,8 +132,7 @@ function main() : void {
 			
 			const $ = cheerio.load(data);
 			cardDB.database.forEach((card) => {
-				$('#content').append(`<div class="card"><div class="cardName">${card.cardName}</div><div class="cardCost">Cost: ${card.cardCost}</div><div class="cardDamage">Damage: ${card.cardDamage}</div><div class="cardHealth">Health: ${card.cardHealth}</div><div class="cardAbility">${card.cardAbility}</div></div>`)
-				
+				$('#content').append(`<div class="card"><div class="cardName"><b>${card.cardName}</b></div><div class="cardRarity"><b>Rarity:</b> ${card.cardRarity.cardRarityStars}</div><div class="cardCost"><b>Cost:</b> ${card.cardCost}</div><div class="cardDamage"><b>Damage:</b> ${card.cardDamage}</div><div class="cardHealth"><b>Health:</b> ${card.cardHealth}</div><div class="cardAbility">${card.cardAbility}</div></div>`);
 			});
 		 
 			res.send($.html());

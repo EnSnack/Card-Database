@@ -9,7 +9,7 @@
 	},
 	"EE002": {
 		"name": "Impling",
-		"ability": "",
+		"ability": "Token.",
 		"damage": 1,
 		"cost": 1,
 		"health": 1,
