@@ -1,12 +1,11 @@
+// Imports
 var express = require("express");
 var app = express();
 var fs = require("fs");
 var cheerio = require("cheerio");
-var PORT = 3000;
-var cardsJSON = JSON.parse(fs.readFileSync('cards.json'));
-app.listen(PORT, function () {
-    console.log("Server up, on port", PORT);
-});
+/*
+ * Class for the card Database
+ */
 var Database = /** @class */ (function () {
     function Database() {
         this.cards = new Array;
@@ -18,13 +17,25 @@ var Database = /** @class */ (function () {
         enumerable: false,
         configurable: true
     });
-    Database.prototype.addCard = function (cardName, cardCost, cardDamage, cardHealth, cardAbility, rarity, foil) {
-        this.cards.push(new Card(cardName, cardCost, cardDamage, cardHealth, cardAbility, rarity, foil));
+    Database.prototype.addCard = function (cardID, cardName, cardCost, cardDamage, cardHealth, cardAbility, rarity, foil) {
+        this.cards.push(new Card(cardID, cardName, cardCost, cardDamage, cardHealth, cardAbility, rarity, foil));
     };
     return Database;
 }());
+/*
+ * Class for the individual cards
+ * Takes 7 necessary parameters:
+ * id {string} - UID of card.
+ * name {string} - Name of card.
+ * cost {number} - Cost of card.
+ * damage {number} - Damage card deals on hit.
+ * health {number} - Damage card can take before destruction.
+ * ability {string} - Unique ability of the card.
+ * rarity {Rarity} - The rarity and foil status of the card.
+ */
 var Card = /** @class */ (function () {
-    function Card(cardName, cardCost, cardDamage, cardHealth, cardAbility, rarity, foil) {
+    function Card(cardID, cardName, cardCost, cardDamage, cardHealth, cardAbility, rarity, foil) {
+        this.id = cardID;
         this.name = cardName;
         this.cost = cardCost;
         this.damage = cardDamage;
@@ -32,6 +43,13 @@ var Card = /** @class */ (function () {
         this.ability = cardAbility;
         this.rarity = new Rarity(rarity, foil);
     }
+    Object.defineProperty(Card.prototype, "cardID", {
+        get: function () {
+            return this.id;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Object.defineProperty(Card.prototype, "cardName", {
         get: function () {
             return this.name;
@@ -76,6 +94,12 @@ var Card = /** @class */ (function () {
     });
     return Card;
 }());
+/*
+ * Class for the rarity status of a card
+ * Takes 2 necessary parameters:
+ * rarity {number} - The numeric rarity of a card.
+ * foil {boolean} - Whether the card is foil or not.
+ */
 var Rarity = /** @class */ (function () {
     function Rarity(rarity, foil) {
         this.rarity = rarity >= 0 && rarity <= 5 ? rarity : 0;
@@ -107,20 +131,28 @@ var Rarity = /** @class */ (function () {
     });
     return Rarity;
 }());
-app.use("/css", express.static(__dirname + '/css'));
-app.get("/", function (req, res) {
-    var cardDB = new Database();
-    Object.keys(cardsJSON).forEach(function (card) {
-        var parent = cardsJSON[card];
-        cardDB.addCard(parent['name'], parent['cost'], parent['damage'], parent['health'], parent['ability'], 2, false);
+function main() {
+    var PORT = 3000;
+    var cardsJSON = JSON.parse(fs.readFileSync('cards.json'));
+    app.listen(PORT, function () {
+        console.log("Server up on port", PORT);
     });
-    fs.readFile(__dirname + '/index.html', 'utf8', function (err, data) {
-        if (err)
-            return console.log(err);
-        var $ = cheerio.load(data);
-        cardDB.database.forEach(function (card) {
-            $('#content').append("<div class=\"card\"><div class=\"cardName\">".concat(card.cardName, "</div><div class=\"cardCost\">Cost: ").concat(card.cardCost, "</div><div class=\"cardDamage\">Damage: ").concat(card.cardDamage, "</div><div class=\"cardHealth\">Health: ").concat(card.cardHealth, "</div><div class=\"cardAbility\">").concat(card.cardAbility, "</div></div>"));
+    app.use("/css", express.static(__dirname + '/css'));
+    app.get("/", function (req, res) {
+        var cardDB = new Database();
+        Object.keys(cardsJSON).forEach(function (card) {
+            var parent = cardsJSON[card];
+            cardDB.addCard(card, parent['name'], parent['cost'], parent['damage'], parent['health'], parent['ability'], 2, false);
         });
-        res.send($.html());
+        fs.readFile(__dirname + '/index.html', 'utf8', function (err, data) {
+            if (err)
+                return console.log(err);
+            var $ = cheerio.load(data);
+            cardDB.database.forEach(function (card) {
+                $('#content').append("<div class=\"card\"><div class=\"cardName\">".concat(card.cardName, "</div><div class=\"cardCost\">Cost: ").concat(card.cardCost, "</div><div class=\"cardDamage\">Damage: ").concat(card.cardDamage, "</div><div class=\"cardHealth\">Health: ").concat(card.cardHealth, "</div><div class=\"cardAbility\">").concat(card.cardAbility, "</div></div>"));
+            });
+            res.send($.html());
+        });
     });
-});
+}
+main();
