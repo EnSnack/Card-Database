@@ -9,6 +9,11 @@
 	margin-left:10px;
 	height:auto;
 	width:8%;
+	padding:6px 6px 0 6px;
+}
+
+.card:hover {
+	background-color:#ddd;
 }
 
 .cardName {
