@@ -19,3 +19,7 @@ A card has been weaved into existence. In this TCG, cards only exist as long as 
 
 ### Activate
 A card is ready for its final stand. This card is on the battlefield and your turn has just started. Upon your turn starting, activate is one of the first phases, all cards' activation happens at this point in order of left to right, therefore play order is highly important.
+
+## Archetypes (so far)
+### Witches
+Sinister, the sisters snicker at the destruction and chaos they cause along the way. They care not for each other, or for anyone else, and do whatever they must to keep themselves alive, and take the enemy down in the process. Witches come in many colours, but notably of all, they come in many evils. The witch archetype plays very selfishly, destroying each other for own merits or becoming more powerful the more they destroy, but they're not necessarily entirely selfish, some summon implings that, while weak, can snowball out of control.
