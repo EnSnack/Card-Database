@@ -18,8 +18,8 @@ class Database {
 		return this.cards;
 	}
 	
-	get uniqueArchetypes(): Array<any> {
-		let _RETURN: Array<any> = [];
+	get uniqueArchetypes(): Array<string> {
+		let _RETURN: Array<string> = [];
 		this.cards.forEach((card) => {
 			card.cardArchetypes.forEach((archetype) => {
 				if(_RETURN.indexOf(archetype) == -1) _RETURN.push(archetype);
