@@ -1,146 +1,299 @@
 {
 	"EE001": {
 		"name": "Desert Witch",
-		"ability": "<b>Creation:</b> Summon two 1/1 Implings.",
+		"ability": {
+			"abilityText": "<b>Creation:</b> Summon two 1/1 Implings.",
+			"abilityKeywords": [
+				"Creation",
+				"Summon"
+			]
+		},
 		"damage": 3,
 		"cost": 3,
 		"health": 2,
-		"rarity": 3
+		"rarity": 3,
+		"archetypes": [
+			"Witch"
+		]
 	},
 	"EE002": {
 		"name": "Impling",
-		"ability": "Token.",
+		"ability": {
+			"abilityText": "",
+			"abilityKeywords": []
+		},
 		"damage": 1,
 		"cost": 1,
 		"health": 1,
-		"rarity": 1
+		"rarity": 1,
+		"archetypes": [
+			"Token",
+			"Demon"
+		]
 	},
 	"EE003": {
 		"name": "Snow Witch",
-		"ability": "<b>Destruction:</b> Summon two 1/1 Implings.",
+		"ability": {
+			"abilityText": "<b>Destruction:</b> Summon two 1/1 Implings.",
+			"abilityKeywords": [
+				"Destruction",
+				"Summon"
+			]
+		},
 		"damage": 3,
 		"cost": 3,
 		"health": 2,
-		"rarity": 3
+		"rarity": 3,
+		"archetypes": [
+			"Witch"
+		]
 	},
 	"EE004": {
 		"name": "Mountain Witch",
-		"ability": "<b>Creation:</b> Summon a 1/1 Impling for every 1/1 Impling you own.",
+		"ability": {
+			"abilityText": "<b>Creation:</b> Summon a 1/1 Impling for every 1/1 Impling you own.",
+			"abilityKeywords": [
+				"Creation",
+				"Summon"
+			]
+		},
 		"damage": 1,
 		"cost": 4,
 		"health": 1,
-		"rarity": 3
+		"rarity": 3,
+		"archetypes": [
+			"Witch"
+		]
 	},
 	"EE005": {
 		"name": "Death Witch",
-		"ability": "<b>Destruction:</b> Summon a 1/1 Impling, then destroy all 1/1 Implings you own.",
+		"ability": {
+			"abilityText": "<b>Destruction:</b> Summon a 1/1 Impling, then destroy all 1/1 Implings you own.",
+			"abilityKeywords": [
+				"Destruction",
+				"Summon"
+			]
+		},
 		"damage": 1,
 		"cost": 3,
 		"health": 3,
-		"rarity": 3
+		"rarity": 3,
+		"archetypes": [
+			"Witch"
+		]
 	},
 	"EE006": {
 		"name": "Life Witch",
-		"ability": "<b>Creation:</b> Heal all other cards you own 1 Health for every Impling you own.",
-		"damage": 1,
+		"ability": {
+			"abilityText": "<b>Creation:</b> Heal all other cards you own 1 Health for every Impling you own.",
+			"abilityKeywords": [
+				"Creation",
+				"Heal"
+			]
+		},
 		"cost": 3,
 		"health": 5,
-		"rarity": 3
+		"rarity": 3,
+		"archetypes": [
+			"Witch"
+		]
 	},
 	"EE007": {
 		"name": "Time Witch",
-		"ability": "<b>Creation:</b> For every 1/1 Impling destroyed this turn, summon a 1/1 Impling.",
+		"ability": {
+			"abilityText": "<b>Creation:</b> For every 1/1 Impling destroyed this turn, summon a 1/1 Impling.",
+			"abilityKeywords": [
+				"Creation",
+				"Summon"
+			]
+		},
 		"damage": 1,
 		"cost": 4,
 		"health": 1,
-		"rarity": 3
+		"rarity": 3,
+		"archetypes": [
+			"Witch"
+		]
 	},
 	"EE008": {
 		"name": "Swamp Witch",
-		"ability": "<b>Activate:</b> Destroy a 1/1 Impling to summon a 1/1 Impling.",
+		"ability": {
+			"abilityText": "<b>Activate:</b> Destroy a 1/1 Impling to summon a 1/1 Impling.",
+			"abilityKeywords": [
+				"Activate",
+				"Summon"
+			]
+		},
 		"damage": 2,
 		"cost": 2,
 		"health": 2,
-		"rarity": 3
+		"rarity": 3,
+		"archetypes": [
+			"Witch"
+		]
 	},
 	"EE009": {
 		"name": "Plague Witch",
-		"ability": "<b>Destruction:</b> Destroy all 1/1 Implings you own, then lose 1 life for every Impling destroyed this way.",
-		"damage": 5,
+		"ability": {
+			"abilityText": "<b>Destruction:</b> Destroy all 1/1 Implings you own, then lose 1 life for every Impling destroyed this way.",
+			"abilityKeywords": [
+				"Destruction"
+			]
+		},
+		"damage": 4,
 		"cost": 5,
-		"health": 5,
-		"rarity": 3
+		"health": 4,
+		"rarity": 3,
+		"archetypes": [
+			"Witch"
+		]
 	},
 	"EE010": {
 		"name": "Famine Witch",
-		"ability": "<b>Activate:</b> Lose 1 life, then summon a 1/1 Impling.",
+		"ability": {
+			"abilityText": "<b>Activate:</b> Lose 1 life, then summon a 1/1 Impling.",
+			"abilityKeywords": [
+				"Activate",
+				"Summon"
+			]
+		},
 		"damage": 2,
 		"cost": 3,
 		"health": 2,
-		"rarity": 3
+		"rarity": 3,
+		"archetypes": [
+			"Witch"
+		]
 	},
 	"EE011": {
 		"name": "Glutton Witch",
-		"ability": "<b>Activate:</b> Destroy a 1/1 Impling, else destroy this card.",
+		"ability": {
+			"abilityText": "<b>Activate:</b> Destroy a 1/1 Impling, else destroy this card.",
+			"abilityKeywords": [
+				"Activate"
+			]
+		},
 		"damage": 5,
 		"cost": 3,
 		"health": 5,
-		"rarity": 3
+		"rarity": 3,
+		"archetypes": [
+			"Witch"
+		]
 	},
 	"EE012": {
 		"name": "Hand Witch",
-		"ability": "<b>Existence:</b> If you own a 1/1 Impling, immediately play this card.",
+		"ability": {
+			"abilityText": "<b>Existence:</b> If you own a 1/1 Impling, immediately play this card for free.",
+			"abilityKeywords": [
+				"Existence",
+				"Free play"
+			]
+		},
 		"damage": 1,
 		"cost": 1,
 		"health": 1,
-		"rarity": 1
+		"rarity": 1,
+		"archetypes": [
+			"Witch"
+		]
 	},
 	"EE013": {
 		"name": "Blood Witch",
-		"ability": "<b>Activate:</b> If you own a 1/1 Impling, destroy it, then heal this card to full health.",
+		"ability": {
+			"abilityText": "<b>Activate:</b> If you own a 1/1 Impling, destroy it, then heal this card to full health.",
+			"abilityKeywords": [
+				"Activate",
+				"Heal"
+			]
+		},
 		"damage": 1,
 		"cost": 3,
 		"health": 4,
-		"rarity": 3
+		"rarity": 3,
+		"archetypes": [
+			"Witch"
+		]
 	},
 	"EE014": {
 		"name": "Lust Witch",
-		"ability": "<b>Creation:</b> If any other cards on the field is a Witch card, destroy this card.",
+		"ability": {
+			"abilityText": "<b>Creation:</b> If any other cards on the field is a Witch card, destroy this card.",
+			"abilityKeywords": [
+				"Creation"
+			]
+		},
 		"damage": 3,
 		"cost": 3,
 		"health": 3,
-		"rarity": 4
+		"rarity": 4,
+		"archetypes": [
+			"Witch"
+		]
 	},
 	"EE015": {
 		"name": "Wrath Witch",
-		"ability": "<b>Activate:</b> If there are any 1/1 Implings on the field, immediately attack one.",
+		"ability": {
+			"abilityText": "<b>Activate:</b> If there are any 1/1 Implings on the field, immediately attack one.",
+			"abilityKeywords": [
+				"Activate"
+			]
+		},
 		"damage": 3,
 		"cost": 2,
 		"health": 3,
-		"rarity": 3
+		"rarity": 3,
+		"archetypes": [
+			"Witch"
+		]
 	},
 	"EE016": {
 		"name": "Sloth Witch",
-		"ability": "<b>Destruction:</b> Immediately resummon this card.",
+		"ability": {
+			"abilityText": "<b>Destruction:</b> Immediately resummon this card.",
+			"abilityKeywords": [
+				"Destruction"
+			]
+		},
 		"damage": 0,
 		"cost": 2,
 		"health": 3,
-		"rarity": 1
+		"rarity": 1,
+		"archetypes": [
+			"Witch"
+		]
 	},
 	"EE017": {
 		"name": "Envy Witch",
-		"ability": "<b>Creation:</b> If any Witch card was destroyed this turn, summon a copy of the destroyed card for the opponent.",
+		"ability": {
+			"abilityText": "<b>Creation:</b> If any Witch card was destroyed this turn, summon a copy of the destroyed card for the opponent.",
+			"abilityKeywords": [
+				"Creation",
+				"Summon"
+			]
+		},
 		"damage": 3,
 		"cost": 4,
 		"health": 3,
-		"rarity": 3
+		"rarity": 3,
+		"archetypes": [
+			"Witch"
+		]
 	},
 	"EE018": {
 		"name": "Crazy Witch",
-		"ability": "<b>Destruction:</b> Destroy one other Witch card you own.",
+		"ability": {
+			"abilityText": "<b>Destruction:</b> Destroy one other Witch card you own.",
+			"abilityKeywords": [
+				"Destruction"
+			]
+		},
 		"damage": 3,
 		"cost": 3,
 		"health": 3,
-		"rarity": 3
+		"rarity": 3,
+		"archetypes": [
+			"Witch"
+		]
 	}
 }

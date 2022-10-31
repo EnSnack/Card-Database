@@ -1,6 +1,20 @@
 #content {
 	display:flex;
+	height:100%;
+}
+#cards {
+	display:flex;
 	flex-wrap:wrap;
+	width:80%;
+}
+#menu {
+	display:flex;
+	left:80%;
+	border-left: 1px #000 solid;
+	position:fixed;
+	height:100%;
+	padding:1% 0 0 5%;
+	width:15%;
 }
 .card {
 	display:flex;
@@ -8,7 +22,7 @@
 	margin-right:10px;
 	margin-left:10px;
 	height:auto;
-	width:8%;
+	width:10%;
 	padding:6px 6px 0 6px;
 }
 
@@ -16,7 +30,10 @@
 	background-color:#ddd;
 }
 
-.cardName {
+.header {
 	font-size:24px;
-	font-weight:400;
+	font-weight:bold;
+}
+.menuContent {
+	margin-top:20px;
 }

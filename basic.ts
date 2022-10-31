@@ -18,21 +18,32 @@ class Database {
 		return this.cards;
 	}
 	
-	addCard(cardID: string, cardName: string, cardCost: number, cardDamage: number, cardHealth: number, cardAbility: string, rarity: number, foil: boolean) {
-		this.cards.push(new Card(cardID,cardName,cardCost,cardDamage,cardHealth,cardAbility,rarity,foil))
+	get uniqueArchetypes(): Array<any> {
+		let _RETURN: Array<any> = [];
+		this.cards.forEach((card) => {
+			card.cardArchetypes.forEach((archetype) => {
+				if(_RETURN.indexOf(archetype) == -1) _RETURN.push(archetype);
+			})
+		})
+		return _RETURN;
+	}
+	
+	addCard(cardID: string, cardData: object, foil: boolean) {
+		this.cards.push(new Card(cardID,cardData['name'],cardData['cost'],cardData['damage'],cardData['health'],cardData['ability'],cardData['rarity'],foil,cardData['archetypes']));
 	}
 }
 
 /*
  * Class for the individual cards
- * Takes 7 necessary parameters:
+ * Takes 9 necessary parameters:
  * id {string} - UID of card.
  * name {string} - Name of card.
  * cost {number} - Cost of card.
  * damage {number} - Damage card deals on hit.
  * health {number} - Damage card can take before destruction.
- * ability {string} - Unique ability of the card.
+ * ability {Ability} - Unique ability of the card.
  * rarity {Rarity} - The rarity and foil status of the card.
+ * archetypes {array} - Archetypes of the card.
  */
 class Card {
 	id: string;
@@ -40,17 +51,19 @@ class Card {
 	cost: number;
 	damage: number;
 	health: number;
-	ability: string;
+	ability: Ability;
 	rarity: Rarity;
+	archetypes: Array<string>;
 	
-	constructor(cardID: string, cardName: string, cardCost: number, cardDamage: number, cardHealth: number, cardAbility: string, rarity: number, foil: boolean) {
+	constructor(cardID: string, cardName: string, cardCost: number, cardDamage: number, cardHealth: number, cardAbility: object, rarity: number, foil: boolean, archetypes: Array<string>) {
 		this.id = cardID;
 		this.name = cardName;
 		this.cost = cardCost;
 		this.damage = cardDamage;
 		this.health = cardHealth;
-		this.ability = cardAbility;
+		this.ability = new Ability(cardAbility['abilityText'],cardAbility['abilityKeywords']);
 		this.rarity = new Rarity(rarity,foil);
+		this.archetypes = archetypes;
 	}
 	
 	get cardID(): string {
@@ -68,11 +81,14 @@ class Card {
 	get cardHealth(): number {
 		return this.health;
 	}
-	get cardAbility(): string {
+	get cardAbility(): Ability {
 		return this.ability;
 	}
 	get cardRarity(): Rarity {
 		return this.rarity;
+	}
+	get cardArchetypes(): Array<string> {
+		return this.archetypes;
 	}
 }
 
@@ -109,6 +125,29 @@ class Rarity {
 	}
 }
 
+/*
+ * Class for the ability of a card
+ * Takes 2 necessary parameters:
+ * abilityText {string} - The literal ability text of a card.
+ * abilityKeywords {Array} - Keywords to be found in the ability text.
+ */
+class Ability {
+	abilityText: string;
+	abilityKeywords: Array<string>;
+	
+	constructor(abilityText: string, abilityKeywords: Array<string>) {
+		this.abilityText = abilityText;
+		this.abilityKeywords = abilityKeywords;
+	}
+	
+	get cardAbilityText(): string {
+		return this.abilityText;
+	}
+	get cardAbilityKeywords(): Array<string> {
+		return this.abilityKeywords;
+	}
+}
+
 function main() : void {
 	const PORT = 3000;
 	const cardsJSON = JSON.parse(fs.readFileSync('cards.json'));
@@ -124,7 +163,7 @@ function main() : void {
 
 		Object.keys(cardsJSON).forEach((card) => {
 			const parent = cardsJSON[card];
-			cardDB.addCard(card,parent['name'],parent['cost'],parent['damage'],parent['health'],parent['ability'],parent['rarity'],false);
+			cardDB.addCard(card,parent,false);
 		})
 		
 		fs.readFile(__dirname + '/index.html', 'utf8', function (err,data) {
@@ -132,8 +171,10 @@ function main() : void {
 			
 			const $ = cheerio.load(data);
 			cardDB.database.forEach((card) => {
-				$('#content').append(`<div class="card"><div class="cardName"><b>${card.cardName}</b></div><div class="cardRarity"><b>Rarity:</b> ${card.cardRarity.cardRarityStars}</div><div class="cardCost"><b>Cost:</b> ${card.cardCost}</div><div class="cardDamage"><b>Damage:</b> ${card.cardDamage}</div><div class="cardHealth"><b>Health:</b> ${card.cardHealth}</div><div class="cardAbility">${card.cardAbility}</div></div>`);
+				$('#cards').append(`<div class="card"><div class="cardName header">${card.cardName}</div><div class="cardRarity"><b>Rarity:</b> ${card.cardRarity.cardRarityStars}</div><div class="cardCost"><b>Cost:</b> ${card.cardCost}</div><div class="cardDamage"><b>Damage:</b> ${card.cardDamage}</div><div class="cardHealth"><b>Health:</b> ${card.cardHealth}</div><div class="cardAbility">${card.cardAbility.cardAbilityText}</div><div class="cardArchetypes"><b>Archetypes:</b> ${card.cardArchetypes.join(",")}</div></div>`);
 			});
+			
+			console.log(cardDB.uniqueArchetypes);
 		 
 			res.send($.html());
 		});
