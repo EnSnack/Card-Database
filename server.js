@@ -185,13 +185,14 @@ var Ability = /** @class */ (function () {
     });
     return Ability;
 }());
-function main() {
+function server() {
     var PORT = 3000;
-    var cardsJSON = JSON.parse(fs.readFileSync('cards.json'));
+    var cardsJSON = JSON.parse(fs.readFileSync('js/cards.json'));
     app.listen(PORT, function () {
         console.log("Server up on port", PORT);
     });
     app.use("/css", express.static(__dirname + '/css'));
+    app.use("/js", express.static(__dirname + '/js'));
     app.get("/", function (req, res) {
         var cardDB = new Database();
         Object.keys(cardsJSON).forEach(function (card) {
@@ -212,4 +213,4 @@ function main() {
         });
     });
 }
-main();
+server();

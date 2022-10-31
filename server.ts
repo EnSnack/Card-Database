@@ -148,15 +148,16 @@ class Ability {
 	}
 }
 
-function main() : void {
+function server() : void {
 	const PORT = 3000;
-	const cardsJSON = JSON.parse(fs.readFileSync('cards.json'));
+	const cardsJSON = JSON.parse(fs.readFileSync('js/cards.json'));
 
 	app.listen(PORT, () => {
 		console.log("Server up on port", PORT);
 	});
 
 	app.use("/css", express.static(__dirname + '/css'));
+	app.use("/js", express.static(__dirname + '/js'));
 
 	app.get("/", (req, res) => {
 		const cardDB = new Database();
@@ -183,4 +184,4 @@ function main() : void {
 	});
 }
 
-main();
+server();
