@@ -174,7 +174,9 @@ function main() : void {
 				$('#cards').append(`<div class="card"><div class="cardName header">${card.cardName}</div><div class="cardRarity"><b>Rarity:</b> ${card.cardRarity.cardRarityStars}</div><div class="cardCost"><b>Cost:</b> ${card.cardCost}</div><div class="cardDamage"><b>Damage:</b> ${card.cardDamage}</div><div class="cardHealth"><b>Health:</b> ${card.cardHealth}</div><div class="cardAbility">${card.cardAbility.cardAbilityText}</div><div class="cardArchetypes"><b>Archetypes:</b> ${card.cardArchetypes.join(",")}</div></div>`);
 			});
 			
-			console.log(cardDB.uniqueArchetypes);
+			cardDB.uniqueArchetypes.forEach((archetype) => {
+				$('.filterContentArch').append(`<div class="filter-${archetype}"><input type="checkbox" name="${archetype}" value="${archetype}"><label for="${archetype}">${archetype}</label></div>`);
+			});
 		 
 			res.send($.html());
 		});
