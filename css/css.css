@@ -21,9 +21,12 @@
 	flex-direction:column;
 	margin-right:10px;
 	margin-left:10px;
-	height:auto;
+	height:fit-content;
 	width:10%;
-	padding:6px 6px 0 6px;
+	padding:6px;
+}
+.hidden {
+	display:none;
 }
 
 .card:hover {
@@ -36,4 +39,8 @@
 }
 .menuContent {
 	margin-top:20px;
+}
+
+.menuContent > div {
+	margin-bottom:20px;
 }

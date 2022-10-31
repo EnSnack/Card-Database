@@ -18,11 +18,21 @@ class Database {
 		return this.cards;
 	}
 	
+	// Maybe combine uniqueArchetypes + uniqueAbilityTypes to one?
 	get uniqueArchetypes(): Array<string> {
 		let _RETURN: Array<string> = [];
 		this.cards.forEach((card) => {
 			card.cardArchetypes.forEach((archetype) => {
 				if(_RETURN.indexOf(archetype) == -1) _RETURN.push(archetype);
+			})
+		})
+		return _RETURN;
+	}
+	get uniqueAbilityTypes(): Array<string> {
+		let _RETURN: Array<string> = [];
+		this.cards.forEach((card) => {
+			card.cardAbility.cardAbilityKeywords.forEach((abilityType) => {
+				if(_RETURN.indexOf(abilityType) == -1) _RETURN.push(abilityType);
 			})
 		})
 		return _RETURN;
@@ -172,11 +182,14 @@ function server() : void {
 			
 			const $ = cheerio.load(data);
 			cardDB.database.forEach((card) => {
-				$('#cards').append(`<div class="card"><div class="cardName header">${card.cardName}</div><div class="cardRarity"><b>Rarity:</b> ${card.cardRarity.cardRarityStars}</div><div class="cardCost"><b>Cost:</b> ${card.cardCost}</div><div class="cardDamage"><b>Damage:</b> ${card.cardDamage}</div><div class="cardHealth"><b>Health:</b> ${card.cardHealth}</div><div class="cardAbility">${card.cardAbility.cardAbilityText}</div><div class="cardArchetypes"><b>Archetypes:</b> ${card.cardArchetypes.join(",")}</div></div>`);
+				$('#cards').append(`<div class="card"><div class="cardName header">${card.cardName}</div><div class="cardRarity"><b>Rarity:</b> ${card.cardRarity.cardRarityStars}</div><div class="cardCost"><b>Cost:</b> ${card.cardCost}</div><div class="cardDamage"><b>Damage:</b> ${card.cardDamage}</div><div class="cardHealth"><b>Health:</b> ${card.cardHealth}</div><div class="cardAbility">${card.cardAbility.cardAbilityText}</div><div class="cardArchetypes"><b>Archetypes:</b> ${card.cardArchetypes.join(",")}</div><div class="hidden cardAbilityTypes">${card.cardAbility.cardAbilityKeywords.join(",")}</div></div>`);
 			});
 			
 			cardDB.uniqueArchetypes.forEach((archetype) => {
-				$('.filterContentArch').append(`<div class="filter-${archetype}"><input type="checkbox" name="${archetype}" value="${archetype}"><label for="${archetype}">${archetype}</label></div>`);
+				$('.filter-Archetypes').append(`<div class="filter-${archetype}"><input type="checkbox" name="${archetype}" value="${archetype}"><label for="${archetype}">${archetype}</label></div>`);
+			});
+			cardDB.uniqueAbilityTypes.forEach((abilityType) => {
+				$('.filter-AbilityTypes').append(`<div class="filter-${abilityType}"><input type="checkbox" name="${abilityType}" value="${abilityType}"><label for="${abilityType}">${abilityType}</label></div>`);
 			});
 		 
 			res.send($.html());
