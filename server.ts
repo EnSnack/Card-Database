@@ -37,6 +37,13 @@ class Database {
 		})
 		return _RETURN;
 	}
+	get uniqueRarities(): Array<string> {
+		let _RETURN: Array<string> = [];
+		this.cards.forEach((card) => {
+			if(_RETURN.indexOf(card.cardRarity.cardRarityStars) == -1) _RETURN.push(card.cardRarity.cardRarityStars);
+		})
+		return _RETURN.sort();
+	}
 	
 	addCard(cardID: string, cardData: object, foil: boolean) {
 		this.cards.push(new Card(cardID,cardData['name'],cardData['cost'],cardData['damage'],cardData['health'],cardData['ability'],cardData['rarity'],foil,cardData['archetypes']));
@@ -190,6 +197,9 @@ function server() : void {
 			});
 			cardDB.uniqueAbilityTypes.forEach((abilityType) => {
 				$('.filter-AbilityTypes').append(`<div class="filter-${abilityType}"><input type="checkbox" name="${abilityType}" value="${abilityType}"><label for="${abilityType}">${abilityType}</label></div>`);
+			});
+			cardDB.uniqueRarities.forEach((rarities) => {
+				$('.filter-Rarity').append(`<div class="filter-${rarities}"><input type="checkbox" name="${rarities}" value="${rarities}"><label for="${rarities}">${rarities}</label></div>`);
 			});
 		 
 			res.send($.html());
