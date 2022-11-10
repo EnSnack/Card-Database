@@ -1,25 +1,30 @@
-function filter(type: string, filter: Array<string>) : void {
+function filter(filter: object) : void {
 	document.querySelectorAll(".card").forEach((item) => {
-		const _CURTYPES = item.querySelector(`.card${type}`).innerHTML
-		if((<any>item).style.display != "none") {
-			if(filter.length != 0 && _CURTYPES.indexOf(filter[filter.length-1]) == -1) {
-				(<any>item).style.display = "none";
-			}
-		} else {
-			if(filter.length != 0 && _CURTYPES.indexOf(filter.join(",")) > -1) {
-				(<any>item).style.display = "";
-			} else if(filter.length == 0) {
-				(<any>item).style.display = "";
+		item.classList.remove("hidden");
+	});
+	document.querySelectorAll(".card").forEach((item) => {
+		for(const [k,v] of Object.entries(filter)) {
+			const _TYPE = item.querySelector(`.card${k}`)
+			const _TAGS = _TYPE.childNodes.length > 0 ? _TYPE.childNodes[_TYPE.childNodes.length-1].textContent.trim().split(",") : [_TYPE.textContent];
+			for(let i=0;i<v.length;i++) {
+				if(!_TAGS.includes(v[i])) {
+					item.classList.add("hidden");
+					break;
+				}
 			}
 		}
 	});
 }
 
 function client() : void {
+	const _FILTER  = {}
+
 	document.querySelectorAll(".menuContent > div > div > input").forEach((item) => {
 		item.addEventListener("click", (data) => {
-			const _TARGET = (data.target as HTMLInputElement)
-			filter(_TARGET.parentElement.parentElement.classList[0].split("-")[1],Array.from(_TARGET.parentElement.parentElement.querySelectorAll("input")).filter((item) => item.checked).map((item) => item.name));
+			const _TARGET  = (data.target as HTMLInputElement)
+			const _TOP_ELE = _TARGET.parentElement.parentElement
+			_FILTER[_TOP_ELE.classList[0].split("-")[1]] = Array.from(_TOP_ELE.querySelectorAll("input")).filter((item) => item.checked).map((item) => item.name)
+			filter(_FILTER);
 		});
 	});
 }
