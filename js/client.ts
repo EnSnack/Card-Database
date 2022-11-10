@@ -1,8 +1,6 @@
 function filter(filter: object) : void {
 	document.querySelectorAll(".card").forEach((item) => {
 		item.classList.remove("hidden");
-	});
-	document.querySelectorAll(".card").forEach((item) => {
 		for(const [k,v] of Object.entries(filter)) {
 			const _TYPE = item.querySelector(`.card${k}`)
 			const _TAGS = _TYPE.childNodes.length > 0 ? _TYPE.childNodes[_TYPE.childNodes.length-1].textContent.trim().split(",") : [_TYPE.textContent];
