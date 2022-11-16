@@ -2,7 +2,7 @@
 	"EE001": {
 		"name": "Ritualist Witch",
 		"ability": {
-			"abilityText": "<b>Creation:</b> <b>Summon</b>.<br><b>Summon:</b> Two 1/1 Impling tokens.",
+			"abilityText": "<b>Creation:</b> <b>Summon</b>.<br><br><b>Summon:</b> Two 1/1 Impling tokens.",
 			"abilityKeywords": [
 				"Creation",
 				"Summon"
@@ -35,7 +35,7 @@
 	"EE003": {
 		"name": "Cultist Witch",
 		"ability": {
-			"abilityText": "<b>Destruction:</b> <b>Summon</b>.<br><b>Summon:</b> Two 1/1 Impling tokens.",
+			"abilityText": "<b>Destruction:</b> <b>Summon</b>.<br><br><b>Summon:</b> Two 1/1 Impling tokens.",
 			"abilityKeywords": [
 				"Destruction",
 				"Summon"
@@ -53,7 +53,7 @@
 	"EE004": {
 		"name": "Occult Witch",
 		"ability": {
-			"abilityText": "<b>Creation:</b> <b>Summon</b>.<br><b>Summon:</b> One 1/1 Impling token for every Impling token you control.",
+			"abilityText": "<b>Creation:</b> <b>Summon</b>.<br><br><b>Summon:</b> One 1/1 Impling token for every Impling token you control.",
 			"abilityKeywords": [
 				"Creation",
 				"Summon"
@@ -71,7 +71,7 @@
 	"EE005": {
 		"name": "Final Breath",
 		"ability": {
-			"abilityText": "<b>Destruction:</b> <b>Summon</b> then <b>Destroy</b>.<br><b>Summon:</b> One 1/1 Impling token.<br><b>Destroy:</b> All Impling tokens you control.",
+			"abilityText": "<b>Destruction:</b> <b>Summon</b> then <b>Destroy</b>.<br><br><b>Summon:</b> One 1/1 Impling token.<br><br><b>Destroy:</b> All Impling tokens you control.",
 			"abilityKeywords": [
 				"Destruction",
 				"Summon",
@@ -88,33 +88,30 @@
 	"EE006": {
 		"name": "Insignificant Resurrection",
 		"ability": {
-			"abilityText": "<b>Creation:</b> If you own an Impling token: <b>Heal</b>.<br> <b>Heal:</b> (1 Health) All cards you control except for this.",
+			"abilityText": "<b>Creation:</b> If you control an Impling token: <b>Heal</b>.<br><br> <b>Heal:</b> 1 health to all cards you control except for this.",
 			"abilityKeywords": [
 				"Creation",
 				"Heal"
 			]
 		},
 		"type": "Spell",
-		"damage": 2,
 		"cost": 3,
-		"health": 5,
 		"rarity": 3,
 		"archetypes": [
 			"Witch"
 		]
 	},
 	"EE007": {
-		"name": "Time Witch",
+		"name": "Unbearable Burden",
 		"ability": {
-			"abilityText": "<b>Creation:</b> For every 1/1 Impling destroyed this turn, summon a 1/1 Impling.",
+			"abilityText": "<b>Creation:</b> For every Impling token destroyed this turn, <b>Summon</b>.<br><br><b>Summon:</b> One 1/1 Impling token.",
 			"abilityKeywords": [
 				"Creation",
 				"Summon"
 			]
 		},
-		"damage": 1,
+		"type": "Spell",
 		"cost": 4,
-		"health": 1,
 		"rarity": 3,
 		"archetypes": [
 			"Witch"
@@ -123,12 +120,14 @@
 	"EE008": {
 		"name": "Swamp Witch",
 		"ability": {
-			"abilityText": "<b>Activate:</b> Destroy a 1/1 Impling to summon a 1/1 Impling.",
+			"abilityText": "<b>Activate:</b> <b>Destroy</b> to <b>Summon</b>.<br><br><b>Destroy:</b> One Impling token.<br><br><b>Summon:</b> One 1/1 Impling token.",
 			"abilityKeywords": [
 				"Activate",
-				"Summon"
+				"Summon",
+				"Destroy"
 			]
 		},
+		"type": "Creature",
 		"damage": 2,
 		"cost": 2,
 		"health": 2,
@@ -140,11 +139,13 @@
 	"EE009": {
 		"name": "Plague Witch",
 		"ability": {
-			"abilityText": "<b>Destruction:</b> Destroy all 1/1 Implings you own, then lose 1 life for every Impling destroyed this way.",
+			"abilityText": "<b>Destruction:</b> <b>Destroy</b> then <b>Drain</b>.<br><br><b>Destroy:</b> All Impling tokens you control.<br><br><b>Drain:</b> 1 health for every Impling token destroyed this way.",
 			"abilityKeywords": [
-				"Destruction"
+				"Destruction",
+				"Drain"
 			]
 		},
+		"type": "Creature",
 		"damage": 4,
 		"cost": 5,
 		"health": 4,
@@ -156,12 +157,14 @@
 	"EE010": {
 		"name": "Famine Witch",
 		"ability": {
-			"abilityText": "<b>Activate:</b> Lose 1 life, then summon a 1/1 Impling.",
+			"abilityText": "<b>Activate:</b> <b>Drain</b> then <b>Summon</b>.<br><br><b>Drain:</b> 1 health.<br><br><b>Summon:</b> One 1/1 Impling token.",
 			"abilityKeywords": [
 				"Activate",
-				"Summon"
+				"Summon",
+				"Drain"
 			]
 		},
+		"type": "Creature",
 		"damage": 2,
 		"cost": 3,
 		"health": 2,
@@ -173,11 +176,13 @@
 	"EE011": {
 		"name": "Glutton Witch",
 		"ability": {
-			"abilityText": "<b>Activate:</b> Destroy a 1/1 Impling, else destroy this card.",
+			"abilityText": "<b>Activate:</b> <b>Destroy</b>, else <b>Destroy</b>.<br><br><b>Destroy:</b> One Impling token.<br><br><b>Destroy:</b> This card.",
 			"abilityKeywords": [
-				"Activate"
+				"Activate",
+				"Destroy"
 			]
 		},
+		"type": "Creature",
 		"damage": 5,
 		"cost": 3,
 		"health": 5,
@@ -189,12 +194,13 @@
 	"EE012": {
 		"name": "Hand Witch",
 		"ability": {
-			"abilityText": "<b>Existence:</b> If you own a 1/1 Impling, immediately play this card for free.",
+			"abilityText": "<b>Existence:</b> If you control an Impling token, <b>Free play</b>.",
 			"abilityKeywords": [
 				"Existence",
 				"Free play"
 			]
 		},
+		"type": "Creature",
 		"damage": 1,
 		"cost": 1,
 		"health": 1,
@@ -206,12 +212,14 @@
 	"EE013": {
 		"name": "Blood Witch",
 		"ability": {
-			"abilityText": "<b>Activate:</b> If you own a 1/1 Impling, destroy it, then heal this card to full health.",
+			"abilityText": "<b>Activate:</b> If you control an Impling token: <b>Destroy</b>, then <b>Heal</b>.<br><br><b>Destroy:</b> An Impling token.<br><br><b>Heal:</b> 1 health.",
 			"abilityKeywords": [
 				"Activate",
+				"Destroy",
 				"Heal"
 			]
 		},
+		"type": "Creature",
 		"damage": 1,
 		"cost": 3,
 		"health": 4,
@@ -223,11 +231,13 @@
 	"EE014": {
 		"name": "Lust Witch",
 		"ability": {
-			"abilityText": "<b>Creation:</b> If any other cards on the field is a Witch card, destroy this card.",
+			"abilityText": "<b>Creation:</b> If any other card on the field is a Witch card, <b>Destroy</b>.<br><br><b>Destroy:</b> This card.",
 			"abilityKeywords": [
-				"Creation"
+				"Creation",
+				"Destroy"
 			]
 		},
+		"type": "Creature",
 		"damage": 3,
 		"cost": 3,
 		"health": 3,
@@ -239,11 +249,13 @@
 	"EE015": {
 		"name": "Wrath Witch",
 		"ability": {
-			"abilityText": "<b>Activate:</b> If there are any 1/1 Implings on the field, immediately attack one.",
+			"abilityText": "<b>Activate:</b> If any other card on the field is an Impling token, <b>Wrath</b>.<br><br><b>Wrath:</b> An impling token.",
 			"abilityKeywords": [
-				"Activate"
+				"Activate",
+				"Wrath"
 			]
 		},
+		"type": "Creature",
 		"damage": 3,
 		"cost": 2,
 		"health": 3,
@@ -260,6 +272,7 @@
 				"Destruction"
 			]
 		},
+		"type": "Creature",
 		"damage": 0,
 		"cost": 2,
 		"health": 3,
@@ -271,12 +284,13 @@
 	"EE017": {
 		"name": "Envy Witch",
 		"ability": {
-			"abilityText": "<b>Creation:</b> If any Witch card was destroyed this turn, summon a copy of the destroyed card for the opponent.",
+			"abilityText": "<b>Creation:</b> If any other Witch card was destroyed this turn, <b>Summon</b>.<br><br><b>Summon:</b> A copy of the destroyed card for the opponent player.",
 			"abilityKeywords": [
 				"Creation",
 				"Summon"
 			]
 		},
+		"type": "Creature",
 		"damage": 3,
 		"cost": 4,
 		"health": 3,
@@ -288,11 +302,12 @@
 	"EE018": {
 		"name": "Crazy Witch",
 		"ability": {
-			"abilityText": "<b>Destruction:</b> Destroy one other Witch card you own.",
+			"abilityText": "<b>Destruction:</b> <b>Destroy</b>.<br><br><b>Destroy:</b> 1 other Witch card you control.",
 			"abilityKeywords": [
 				"Destruction"
 			]
 		},
+		"type": "Creature",
 		"damage": 3,
 		"cost": 3,
 		"health": 3,
@@ -310,6 +325,7 @@
 				"Peer"
 			]
 		},
+		"type": "Creature",
 		"damage": 2,
 		"cost": 2,
 		"health": 2,
@@ -321,13 +337,14 @@
 	"EE020": {
 		"name": "Nomad of the Distant Lands",
 		"ability": {
-			"abilityText": "<b>Creation:</b> <b>Peer</b>.\n<b>Destruction:</b> <b>Peer</b>.",
+			"abilityText": "<b>Creation:</b> <b>Peer</b>.<br><br><b>Destruction:</b> <b>Peer</b>.",
 			"abilityKeywords": [
 				"Creation",
 				"Destruction",
 				"Peer"
 			]
 		},
+		"type": "Creature",
 		"damage": 3,
 		"cost": 4,
 		"health": 3,
@@ -345,6 +362,7 @@
 				"Peer"
 			]
 		},
+		"type": "Creature",
 		"damage": 2,
 		"cost": 2,
 		"health": 2,
@@ -356,12 +374,13 @@
 	"EE022": {
 		"name": "Nomad of Forbidden Teachings",
 		"ability": {
-			"abilityText": "<b>Destruction:</b> Summon a 2/2 Nomad Zombie.",
+			"abilityText": "<b>Destruction:</b> <b>Summon</b>.<br><br><b>Summon:</b> One 2/2 Nomad Zombie.",
 			"abilityKeywords": [
 				"Destruction",
 				"Summon"
 			]
 		},
+		"type": "Creature",
 		"damage": 2,
 		"cost": 2,
 		"health": 2,
@@ -379,6 +398,7 @@
 				"Peer"
 			]
 		},
+		"type": "Creature Token",
 		"damage": 2,
 		"cost": 2,
 		"health": 2,
@@ -398,6 +418,7 @@
 				"Peer"
 			]
 		},
+		"type": "Creature",
 		"damage": 2,
 		"cost": 2,
 		"health": 1,
