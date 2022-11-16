@@ -12,6 +12,7 @@
 	left:80%;
 	border-left: 1px #000 solid;
 	position:fixed;
+	flex-direction:column;
 	height:100%;
 	padding:1% 0 0 5%;
 	width:15%;
@@ -28,12 +29,20 @@
 .hidden {
 	display:none;
 }
+.cardAbility {
+	background-color:#ffebcd;
+	padding-top:5px;
+	padding-bottom:5px;
+}
 
 .card:hover {
 	background-color:#ddd;
 }
+.card:active {
+	background-color:#bbb;
+}
 
-.header {
+.header, .cardName {
 	font-size:24px;
 	font-weight:bold;
 }

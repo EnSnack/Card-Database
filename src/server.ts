@@ -18,52 +18,53 @@ class Database {
 		return this.cards;
 	}
 	
-	// Maybe combine uniqueArchetypes + uniqueAbilityTypes to one?
 	get uniqueArchetypes(): Array<string> {
 		let _RETURN: Array<string> = [];
 		this.cards.forEach((card) => {
 			card.cardArchetypes.forEach((archetype) => {
-				if(_RETURN.indexOf(archetype) == -1) _RETURN.push(archetype);
+				_RETURN.push(archetype);
 			})
 		})
-		return _RETURN;
+		return [... new Set(_RETURN)];
 	}
 	get uniqueAbilityTypes(): Array<string> {
 		let _RETURN: Array<string> = [];
 		this.cards.forEach((card) => {
 			card.cardAbility.cardAbilityKeywords.forEach((abilityType) => {
-				if(_RETURN.indexOf(abilityType) == -1) _RETURN.push(abilityType);
+				_RETURN.push(abilityType);
 			})
 		})
-		return _RETURN;
+		return [... new Set(_RETURN)];
 	}
 	get uniqueRarities(): Array<string> {
 		let _RETURN: Array<string> = [];
 		this.cards.forEach((card) => {
-			if(_RETURN.indexOf(card.cardRarity.cardRarityStars) == -1) _RETURN.push(card.cardRarity.cardRarityStars);
+			_RETURN.push(card.cardRarity.cardRarityStars);
 		})
-		return _RETURN.sort();
+		return [... new Set(_RETURN)].sort();
 	}
 	
 	addCard(cardID: string, cardData: object, foil: boolean) {
-		this.cards.push(new Card(cardID,cardData['name'],cardData['cost'],cardData['damage'],cardData['health'],cardData['ability'],cardData['rarity'],foil,cardData['archetypes']));
+		this.cards.push(new Card(cardID,cardData['type'],cardData['name'],cardData['cost'],cardData['ability'],cardData['rarity'],foil,cardData['archetypes'],cardData['damage'],cardData['health']));
 	}
 }
 
 /*
  * Class for the individual cards
- * Takes 9 necessary parameters:
+ * Takes 8 mandatory and 2 optional parameters:
  * id {string} - UID of card.
+ * type {string} - Type of card.
  * name {string} - Name of card.
  * cost {number} - Cost of card.
- * damage {number} - Damage card deals on hit.
- * health {number} - Damage card can take before destruction.
  * ability {Ability} - Unique ability of the card.
  * rarity {Rarity} - The rarity and foil status of the card.
  * archetypes {array} - Archetypes of the card.
+ * [damage] {number} - Damage card deals on hit.
+ * [health] {number} - Damage card can take before destruction.
  */
 class Card {
 	id: string;
+	type: string;
 	name: string;
 	cost: number;
 	damage: number;
@@ -72,8 +73,9 @@ class Card {
 	rarity: Rarity;
 	archetypes: Array<string>;
 	
-	constructor(cardID: string, cardName: string, cardCost: number, cardDamage: number, cardHealth: number, cardAbility: object, rarity: number, foil: boolean, archetypes: Array<string>) {
+	constructor(cardID: string, cardType: string, cardName: string, cardCost: number, cardAbility: object, rarity: number, foil: boolean, archetypes: Array<string>, cardDamage?: number, cardHealth?: number) {
 		this.id = cardID;
+		this.id = cardType;
 		this.name = cardName;
 		this.cost = cardCost;
 		this.damage = cardDamage;
@@ -85,6 +87,9 @@ class Card {
 	
 	get cardID(): string {
 		return this.id;
+	}
+	get cardType(): string {
+		return this.type;
 	}
 	get cardName(): string {
 		return this.name;
@@ -167,14 +172,14 @@ class Ability {
 
 function server() : void {
 	const PORT = 3000;
-	const cardsJSON = JSON.parse(fs.readFileSync('js/cards.json'));
+	const cardsJSON = JSON.parse(fs.readFileSync('client/cards.json'));
 
 	app.listen(PORT, () => {
 		console.log("Server up on port", PORT);
 	});
 
 	app.use("/css", express.static(__dirname + '/css'));
-	app.use("/js", express.static(__dirname + '/js'));
+	app.use("/client", express.static(__dirname + '/client'));
 
 	app.get("/", (req, res) => {
 		const cardDB = new Database();

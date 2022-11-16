@@ -1,13 +1,14 @@
 {
 	"EE001": {
-		"name": "Desert Witch",
+		"name": "Ritualist Witch",
 		"ability": {
-			"abilityText": "<b>Creation:</b> Summon two 1/1 Implings.",
+			"abilityText": "<b>Creation:</b> <b>Summon</b>.<br><b>Summon:</b> Two 1/1 Impling tokens.",
 			"abilityKeywords": [
 				"Creation",
 				"Summon"
 			]
 		},
+		"type": "Creature",
 		"damage": 3,
 		"cost": 3,
 		"health": 2,
@@ -22,24 +23,25 @@
 			"abilityText": "",
 			"abilityKeywords": []
 		},
+		"type": "Creature Token",
 		"damage": 1,
 		"cost": 1,
 		"health": 1,
 		"rarity": 1,
 		"archetypes": [
-			"Token",
 			"Demon"
 		]
 	},
 	"EE003": {
-		"name": "Snow Witch",
+		"name": "Cultist Witch",
 		"ability": {
-			"abilityText": "<b>Destruction:</b> Summon two 1/1 Implings.",
+			"abilityText": "<b>Destruction:</b> <b>Summon</b>.<br><b>Summon:</b> Two 1/1 Impling tokens.",
 			"abilityKeywords": [
 				"Destruction",
 				"Summon"
 			]
 		},
+		"type": "Creature",
 		"damage": 3,
 		"cost": 3,
 		"health": 2,
@@ -49,14 +51,15 @@
 		]
 	},
 	"EE004": {
-		"name": "Mountain Witch",
+		"name": "Occult Witch",
 		"ability": {
-			"abilityText": "<b>Creation:</b> Summon a 1/1 Impling for every 1/1 Impling you own.",
+			"abilityText": "<b>Creation:</b> <b>Summon</b>.<br><b>Summon:</b> One 1/1 Impling token for every Impling token you control.",
 			"abilityKeywords": [
 				"Creation",
 				"Summon"
 			]
 		},
+		"type": "Creature",
 		"damage": 1,
 		"cost": 4,
 		"health": 1,
@@ -66,31 +69,33 @@
 		]
 	},
 	"EE005": {
-		"name": "Death Witch",
+		"name": "Final Breath",
 		"ability": {
-			"abilityText": "<b>Destruction:</b> Summon a 1/1 Impling, then destroy all 1/1 Implings you own.",
+			"abilityText": "<b>Destruction:</b> <b>Summon</b> then <b>Destroy</b>.<br><b>Summon:</b> One 1/1 Impling token.<br><b>Destroy:</b> All Impling tokens you control.",
 			"abilityKeywords": [
 				"Destruction",
-				"Summon"
+				"Summon",
+				"Destroy"
 			]
 		},
-		"damage": 1,
+		"type": "Spell",
 		"cost": 3,
-		"health": 3,
 		"rarity": 3,
 		"archetypes": [
-			"Witch"
+			"Witch"	
 		]
 	},
 	"EE006": {
-		"name": "Life Witch",
+		"name": "Insignificant Resurrection",
 		"ability": {
-			"abilityText": "<b>Creation:</b> Heal all other cards you own 1 Health for every Impling you own.",
+			"abilityText": "<b>Creation:</b> If you own an Impling token: <b>Heal</b>.<br> <b>Heal:</b> (1 Health) All cards you control except for this.",
 			"abilityKeywords": [
 				"Creation",
 				"Heal"
 			]
 		},
+		"type": "Spell",
+		"damage": 2,
 		"cost": 3,
 		"health": 5,
 		"rarity": 3,
@@ -294,6 +299,111 @@
 		"rarity": 3,
 		"archetypes": [
 			"Witch"
+		]
+	},
+	"EE019": {
+		"name": "Nomad of the Red",
+		"ability": {
+			"abilityText": "<b>Destruction:</b> <b>Peer</b>.",
+			"abilityKeywords": [
+				"Destruction",
+				"Peer"
+			]
+		},
+		"damage": 2,
+		"cost": 2,
+		"health": 2,
+		"rarity": 2,
+		"archetypes": [
+			"Nomad"
+		]
+	},
+	"EE020": {
+		"name": "Nomad of the Distant Lands",
+		"ability": {
+			"abilityText": "<b>Creation:</b> <b>Peer</b>.\n<b>Destruction:</b> <b>Peer</b>.",
+			"abilityKeywords": [
+				"Creation",
+				"Destruction",
+				"Peer"
+			]
+		},
+		"damage": 3,
+		"cost": 4,
+		"health": 3,
+		"rarity": 5,
+		"archetypes": [
+			"Nomad"
+		]
+	},
+	"EE021": {
+		"name": "Nomad of the Unforeseen Circumstances",
+		"ability": {
+			"abilityText": "<b>Creation:</b> If you own another Nomad, <b>Peer</b>.",
+			"abilityKeywords": [
+				"Creation",
+				"Peer"
+			]
+		},
+		"damage": 2,
+		"cost": 2,
+		"health": 2,
+		"rarity": 2,
+		"archetypes": [
+			"Nomad"
+		]
+	},
+	"EE022": {
+		"name": "Nomad of Forbidden Teachings",
+		"ability": {
+			"abilityText": "<b>Destruction:</b> Summon a 2/2 Nomad Zombie.",
+			"abilityKeywords": [
+				"Destruction",
+				"Summon"
+			]
+		},
+		"damage": 2,
+		"cost": 2,
+		"health": 2,
+		"rarity": 2,
+		"archetypes": [
+			"Nomad"
+		]
+	},
+	"EE023": {
+		"name": "Zombie Nomad",
+		"ability": {
+			"abilityText": "<b>Destruction:</b> <b>Peer</b>.",
+			"abilityKeywords": [
+				"Destruction",
+				"Peer"
+			]
+		},
+		"damage": 2,
+		"cost": 2,
+		"health": 2,
+		"rarity": 1,
+		"archetypes": [
+			"Nomad",
+			"Token",
+			"Undead"
+		]
+	},
+	"EE024": {
+		"name": "Nomad of the Third Age",
+		"ability": {
+			"abilityText": "<b>Creation:</b> <b>Delay</b>.\n<b>Delay</b> (1 round): <b>Peer</b> twice.",
+			"abilityKeywords": [
+				"Delay",
+				"Peer"
+			]
+		},
+		"damage": 2,
+		"cost": 2,
+		"health": 1,
+		"rarity": 3,
+		"archetypes": [
+			"Nomad"
 		]
 	}
 }
