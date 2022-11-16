@@ -8,39 +8,27 @@ const cheerio = require("cheerio");
  * Class for the card Database
  */
 class Database {
-	cards: Array<Card>;
+	cards: Card[];
 	
 	constructor() {
-		this.cards = new Array<Card>;
+		this.cards = new Array<Card>();
 	}
 	
 	get database(): Array<Card> {
 		return this.cards;
 	}
 	
-	get uniqueArchetypes(): Array<string> {
+	uniqueAttributes(attr: string): string[] {
 		let _RETURN: Array<string> = [];
 		this.cards.forEach((card) => {
-			card.cardArchetypes.forEach((archetype) => {
-				_RETURN.push(archetype);
-			})
-		})
-		return [... new Set(_RETURN)];
-	}
-	get uniqueAbilityTypes(): Array<string> {
-		let _RETURN: Array<string> = [];
-		this.cards.forEach((card) => {
-			card.cardAbility.cardAbilityKeywords.forEach((abilityType) => {
-				_RETURN.push(abilityType);
-			})
-		})
-		return [... new Set(_RETURN)];
-	}
-	get uniqueRarities(): Array<string> {
-		let _RETURN: Array<string> = [];
-		this.cards.forEach((card) => {
-			_RETURN.push(card.cardRarity.cardRarityStars);
-		})
+			if (typeof card[attr] == "object") {
+				card[attr].forEach((item) => {
+					_RETURN.push(item);
+				});
+			} else {
+				_RETURN.push(card[attr]);
+			}
+		});
 		return [... new Set(_RETURN)].sort();
 	}
 	
@@ -67,21 +55,21 @@ class Card {
 	type: string;
 	name: string;
 	cost: number;
-	ability: Ability;
-	rarity: Rarity;
-	archetypes: Array<string>;
+	ability: { abilityText: string; abilityKeywords: string[] };
+	rarity: number;
+	archetypes: string[];
 	damage: number;
 	health: number;
 	
-	constructor(cardID: string, cardType: string, cardName: string, cardCost: number, cardAbility: object, rarity: number, archetypes: Array<string>, cardDamage?: number, cardHealth?: number) {
+	constructor(cardID: string, cardType: string, cardName: string, cardCost: number, cardAbility: object, rarity: number, archetypes: string[], cardDamage?: number, cardHealth?: number) {
 		this.id = cardID;
 		this.type = cardType;
 		this.name = cardName;
 		this.cost = cardCost;
-		this.damage = cardDamage;
-		this.health = cardHealth;
-		this.ability = new Ability(cardAbility['abilityText'],cardAbility['abilityKeywords']);
-		this.rarity = new Rarity(rarity);
+		this.damage = cardDamage || null;
+		this.health = cardHealth || null;
+		this.ability = { abilityText: cardAbility['abilityText'] as string, abilityKeywords: cardAbility['abilityKeywords'] as string[] };
+		this.rarity = rarity;
 		this.archetypes = archetypes;
 	}
 	
@@ -103,31 +91,13 @@ class Card {
 	get cardHealth(): number {
 		return this.health;
 	}
-	get cardAbility(): Ability {
-		return this.ability;
+	get cardAbilityText(): string {
+		return this.ability['abilityText'];
 	}
-	get cardRarity(): Rarity {
-		return this.rarity;
+	get cardAbilityKeywords(): string[] {
+		return this.ability['abilityKeywords'];
 	}
-	get cardArchetypes(): Array<string> {
-		return this.archetypes;
-	}
-}
-
-/*
- * Class for the rarity status of a card
- * Takes 2 necessary parameters:
- * rarity {number} - The numeric rarity of a card.
- */
-class Rarity {
-	rarity: number;
-	foil: boolean;
-	
-	constructor(rarity: number) {
-		this.rarity = rarity >= 1 && rarity <= 5 ? rarity : 1;
-	}
-	
-	get cardRarityRaw(): number {
+	get cardRarity(): number {
 		return this.rarity;
 	}
 	get cardRarityStars(): string {
@@ -137,28 +107,8 @@ class Rarity {
 		}
 		return stars;
 	}
-}
-
-/*
- * Class for the ability of a card
- * Takes 2 necessary parameters:
- * abilityText {string} - The literal ability text of a card.
- * abilityKeywords {Array} - Keywords to be found in the ability text.
- */
-class Ability {
-	abilityText: string;
-	abilityKeywords: Array<string>;
-	
-	constructor(abilityText: string, abilityKeywords: Array<string>) {
-		this.abilityText = abilityText;
-		this.abilityKeywords = abilityKeywords;
-	}
-	
-	get cardAbilityText(): string {
-		return this.abilityText;
-	}
-	get cardAbilityKeywords(): Array<string> {
-		return this.abilityKeywords;
+	get cardArchetypes(): string[] {
+		return this.archetypes;
 	}
 }
 
@@ -186,18 +136,16 @@ function server() : void {
 			
 			const $ = cheerio.load(data);
 			cardDB.database.forEach((card) => {
-				$('#cards').append(`<div class="card"><div class="cardName header">${card.cardName}</div><div class="cardRarity"><b>Rarity:</b> ${card.cardRarity.cardRarityStars}</div><div class="cardCost"><b>Cost:</b> ${card.cardCost}</div><div class="cardDamage"><b>Damage:</b> ${card.cardDamage}</div><div class="cardHealth"><b>Health:</b> ${card.cardHealth}</div><div class="cardAbility">${card.cardAbility.cardAbilityText}</div><div class="cardArchetypes"><b>Archetypes:</b> ${card.cardArchetypes.join(",")}</div><div class="hidden cardAbilityTypes">${card.cardAbility.cardAbilityKeywords.join(",")}</div></div>`);
+				$('#cards').append(`<div id="${card.cardID}" class="card"></div>`);
+				$(`#${card.cardID}`).append(`<div class="cardName header">${card.cardName}</div><div class="cardRarity"><b>Rarity:</b> ${card.cardRarityStars}</div><div class="cardCost"><b>Cost:</b> ${card.cardCost}</div><div class="cardDamage"><b>Damage:</b> ${card.cardDamage}</div><div class="cardHealth"><b>Health:</b> ${card.cardHealth}</div><div class="cardAbility">${card.cardAbilityText}</div><div class="cardArchetypes"><b>Archetypes:</b> ${card.cardArchetypes.join(",")}</div><div class="hidden cardAbilityTypes">${card.cardAbilityKeywords.join(",")}</div>`);
 			});
 			
-			cardDB.uniqueArchetypes.forEach((archetype) => {
-				$('.filter-Archetypes').append(`<div class="filter-${archetype}"><input type="checkbox" name="${archetype}" value="${archetype}"><label for="${archetype}">${archetype}</label></div>`);
-			});
-			cardDB.uniqueAbilityTypes.forEach((abilityType) => {
-				$('.filter-AbilityTypes').append(`<div class="filter-${abilityType}"><input type="checkbox" name="${abilityType}" value="${abilityType}"><label for="${abilityType}">${abilityType}</label></div>`);
-			});
-			cardDB.uniqueRarities.forEach((rarities) => {
-				$('.filter-Rarity').append(`<div class="filter-${rarities}"><input type="checkbox" name="${rarities}" value="${rarities}"><label for="${rarities}">${rarities}</label></div>`);
-			});
+			const _U = ["cardArchetypes", "cardAbilityKeywords", "cardRarityStars" ,"cardType"];
+			for(let i=0;i<_U.length;i++) {
+				cardDB.uniqueAttributes(_U[i]).forEach((item) => {
+					$(`.filter-${_U[i].substring(4)}`).append(`<div class="filter-${item}"><input type="checkbox" name="${item}" value="${item}"><label for="${item}">${item}</label></div>`);
+				});
+			}
 		 
 			res.send($.html());
 		});
