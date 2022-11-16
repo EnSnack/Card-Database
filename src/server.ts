@@ -44,8 +44,8 @@ class Database {
 		return [... new Set(_RETURN)].sort();
 	}
 	
-	addCard(cardID: string, cardData: object, foil: boolean) {
-		this.cards.push(new Card(cardID,cardData['type'],cardData['name'],cardData['cost'],cardData['ability'],cardData['rarity'],foil,cardData['archetypes'],cardData['damage'],cardData['health']));
+	addCard(cardID: string, cardData: object) {
+		this.cards.push(new Card(cardID,cardData['type'],cardData['name'],cardData['cost'],cardData['ability'],cardData['rarity'],cardData['archetypes'],cardData['damage'],cardData['health']));
 	}
 }
 
@@ -67,21 +67,21 @@ class Card {
 	type: string;
 	name: string;
 	cost: number;
-	damage: number;
-	health: number;
 	ability: Ability;
 	rarity: Rarity;
 	archetypes: Array<string>;
+	damage: number;
+	health: number;
 	
-	constructor(cardID: string, cardType: string, cardName: string, cardCost: number, cardAbility: object, rarity: number, foil: boolean, archetypes: Array<string>, cardDamage?: number, cardHealth?: number) {
+	constructor(cardID: string, cardType: string, cardName: string, cardCost: number, cardAbility: object, rarity: number, archetypes: Array<string>, cardDamage?: number, cardHealth?: number) {
 		this.id = cardID;
-		this.id = cardType;
+		this.type = cardType;
 		this.name = cardName;
 		this.cost = cardCost;
 		this.damage = cardDamage;
 		this.health = cardHealth;
 		this.ability = new Ability(cardAbility['abilityText'],cardAbility['abilityKeywords']);
-		this.rarity = new Rarity(rarity,foil);
+		this.rarity = new Rarity(rarity);
 		this.archetypes = archetypes;
 	}
 	
@@ -118,15 +118,13 @@ class Card {
  * Class for the rarity status of a card
  * Takes 2 necessary parameters:
  * rarity {number} - The numeric rarity of a card.
- * foil {boolean} - Whether the card is foil or not.
  */
 class Rarity {
 	rarity: number;
 	foil: boolean;
 	
-	constructor(rarity: number, foil: boolean) {
-		this.rarity = rarity >= 1 && rarity <= 5 ? rarity : 0
-		this.foil = foil;
+	constructor(rarity: number) {
+		this.rarity = rarity >= 1 && rarity <= 5 ? rarity : 1;
 	}
 	
 	get cardRarityRaw(): number {
@@ -135,15 +133,9 @@ class Rarity {
 	get cardRarityStars(): string {
 		let stars = '';
 		for(let i=0;i<this.rarity;i++) {
-			stars+='*'
+			stars+='*';
 		}
 		return stars;
-	}
-	get cardFoil(): boolean {
-		return this.foil;
-	}
-	set cardFoil(value: boolean) {		
-		this.foil = value;
 	}
 }
 
@@ -186,7 +178,7 @@ function server() : void {
 
 		Object.keys(cardsJSON).forEach((card) => {
 			const parent = cardsJSON[card];
-			cardDB.addCard(card,parent,false);
+			cardDB.addCard(card,parent);
 		})
 		
 		fs.readFile(__dirname + '/index.html', 'utf8', function (err,data) {
