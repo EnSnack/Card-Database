@@ -5,6 +5,16 @@ These cards are merely ideas for some design ideas I have. It's a constant WIP b
 
 Below you will find explanations on the current keywords of the archetype, this will eventually be visible on the site as well.
 
+## Unique Mechanics
+### The Fog
+The Lands of [...] are vile, disgusting, and for most, uninhabitable, and yet upon it exists creatures of all sorts. At the end of every round, cards react to the fog depending on their "fog faction". In these lands exist three primary livelihoods that all take different stances to the aforementioned mechanic of the fog:
+
+#### Fogwalkers
+Fogwalkers were either born in the fog, or shaped by it. These creatures are so far gone from any similarity to humans that the only shred of humanity left in their bodies is their eternal hunger for exploration in the everchanging [...]. Some of these creatures still have their senses and walk the earth with regrets in search of family, friends, or just anyone willing to impart hospitality to them. Fogwalkers born in the fog often see those shaped by it as foreign monsters, and do not see them as brethren. The Fogwalkers' very nature of the fog allows them to heal instead of taking damage from the fog.
+
+#### Fogbenders
+Fogbenders have spent centuries and generations learning to bend the very nature of the fog to their will.
+
 ## Keywords
 ### Creation
 A card has been forged into creation. This card has just been played on the battlefield, that is, this card's cost has been paid and has been put down. Upon this happening, activate the text on the card that starts with Creation.
