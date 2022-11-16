@@ -22,7 +22,7 @@ A card is ready for its final stand. This card is on the battlefield and your tu
 
 ## Archetypes (so far)
 ### Witches
-Sinister, the sisters snicker at the destruction and chaos they cause along the way. They care not for each other, or for anyone else, and do whatever they must to keep themselves alive, and take the enemy down in the process. Witches come in many colours, but notably of all, they come in many evils. The witch archetype plays very selfishly, destroying each other for own merits or becoming more powerful the more they destroy, but they're not necessarily entirely selfish, some summon implings that, while weak, can snowball out of control.
+Sinister, the sisters snicker at the destruction and chaos they cause along the way. They care not for each other, nor for anyone else, and do whatever they must to keep themselves alive, and take down the enemy in the process. Witches come in many flavours, but notably of all, they come in many types of evil. The witch archetype plays mostly very selfishly, destroying each other for their own merits or becoming more powerful the more they destruction they cause, but they're not necessarily entirely selfish, some summon implings that, while weak, can snowball out of control.
 
-### Demons
-Evil can come in many shapes, oftenmost however, they come in the shapes of the most demonic creatures you can imagine.
+### Nomads
+The Nomads, a humble and noble people, yet with ulterior motives. Their inate ability to foresee that which does not yet exist makes most of their power, but some Nomads have abandoned this path in search of higher powers. Nomads play by allowing the player to peer at that which is unexisting, their unique card keyword of Peer allows them to peer at the top three cards of their graveyard or their deck, weaving any creature found into existance, thus working well with cards with the existence keyword.
