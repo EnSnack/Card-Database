@@ -7,13 +7,16 @@ Below you will find explanations on the current keywords of the archetype, this 
 
 ## Unique Mechanics
 ### The Fog
-The Lands of [...] are vile, disgusting, and for most, uninhabitable, and yet upon it exists creatures of all sorts. At the end of every round, cards react to the fog depending on their "fog faction". In these lands exist three primary livelihoods that all take different stances to the aforementioned mechanic of the fog:
+The lands of [...] are vile, disgusting, and for most, uninhabitable, and yet upon it exists creatures of all sorts. At the end of every round, cards react to the fog depending on their "fog faction". In these lands exist three primary livelihoods that all take different stances to the aforementioned mechanic of the fog:
 
 #### Fogwalkers
 Fogwalkers were either born in the fog, or shaped by it. These creatures are so far gone from any similarity to humans that the only shred of humanity left in their bodies is their eternal hunger for exploration in the everchanging [...]. Some of these creatures still have their senses and walk the earth with regrets in search of family, friends, or just anyone willing to impart hospitality to them. Fogwalkers born in the fog often see those shaped by it as foreign monsters, and do not see them as brethren. The Fogwalkers' very nature of the fog allows them to heal instead of taking damage from the fog.
 
 #### Fogbenders
-Fogbenders have spent centuries and generations learning to bend the very nature of the fog to their will.
+Fogbenders have spent centuries and generations learning to bend the very nature of the fog to their will. While these creatures can consist of humans, they are not limited to the human race. With their ability to bend fog to their will, the lands of [...] become a playground to the Fogbenders, only limited by their imagination. The Fogbenders will often stick together to the best of their ability, though with lands as vile as these, knowing who is your ally and who is your enemy is no easy feat. Fogbenders are able to undo a target's very fog livelihood or use it for themselves as well.
+
+#### Unbeings
+Unbeings are a word given to them by the Fogwalkers and Fogbenders, despite the name, they are both the most and least human left in [...]. The Unbeings consist of anything between newly settled humans, to Fogwalkers so far gone they are beyond recognition, and the part that causes the Fogwalkers and Fogbenders most confusion is the close relationship between both of these Unbeings. Unbeings function in no one way under the circumstances of the fog, their special circumstances are written with the Fog keyword.
 
 ## Keywords
 ### Creation
