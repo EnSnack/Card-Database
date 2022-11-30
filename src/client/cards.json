@@ -53,7 +53,7 @@
 	"EE004": {
 		"name": "Occult Witch",
 		"ability": {
-			"abilityText": "<b>Creation:</b> <b>Summon</b>.<br><br><b>Summon:</b> One 1/1 Impling token for every Impling token you control.",
+			"abilityText": "<b>Creation:</b> For every Impling token you control, <b>Summon</b>.<br><br><b>Summon:</b> One 1/1 Impling token.",
 			"abilityKeywords": [
 				"Creation",
 				"Summon"

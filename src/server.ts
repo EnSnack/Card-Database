@@ -2,6 +2,7 @@
 const express = require("express");
 const app = express();
 const fs = require("fs");
+const path = require("path");
 const cheerio = require("cheerio");
 
 /*
@@ -114,7 +115,7 @@ class Card {
 
 function server() : void {
 	const PORT = 3000;
-	const cardsJSON = JSON.parse(fs.readFileSync('client/cards.json'));
+	const cardsJSON = JSON.parse(fs.readFileSync(path.resolve(__dirname, './client/cards.json')));
 
 	app.listen(PORT, () => {
 		console.log("Server up on port", PORT);

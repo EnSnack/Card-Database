@@ -1,0 +1,22 @@
+{
+  "name": "card-db",
+  "version": "1.0.0",
+  "description": "A simple TCG database with fake cards.",
+  "author": "Steffen Christensen <wollausteffen@gmail.com>",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+	"build": "npx tsc --build",
+	"clean": "npx tsc --build --clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EnSnack/Card-Database"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "express": "^4.18.2",
+    "typescript": "^4.9.3"
+  }
+}
