@@ -1,11 +1,10 @@
 FROM node:alpine
 
-RUN apk add git
+WORKDIR /app
 
-RUN git clone --depth 1 https://github.com/EnSnack/Card-Database /apps/db
+COPY . .
 
-WORKDIR /apps/db
-RUN npm install --production
+RUN npm install
 
 EXPOSE 3000
 
