@@ -5,6 +5,10 @@ These cards are merely ideas for some design ideas I have. It's a constant WIP b
 
 Below you will find explanations on the current keywords of the archetype, this will eventually be visible on the site as well.
 
+## Rules
+### Playing a card / Summoning (a card)
+Unless otherwise stated, cards are always played/summoned from the leftmost column. When a new card is played/summoned, all cards to the right of the newly played/summoned card move one column to the right unless they are unavailable to, in which case they are **destroyed**.
+
 ## Unique Mechanics
 ### The Fog
 The lands of [...] are vile, disgusting, and for most, uninhabitable, and yet upon it exists creatures of all sorts. At the end of every round, cards react to the fog depending on their "fog faction". In these lands exist three primary livelihoods that all take different stances to the aforementioned mechanic of the fog:
